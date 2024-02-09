@@ -1,7 +1,7 @@
 { config, lib, ... }: {
   options = {
     flakeURI = lib.mkOption {
-      type = types.string;
+      type = lib.types.string;
       default = "github:jojolabs/system#joris@linux";
     };
   };
