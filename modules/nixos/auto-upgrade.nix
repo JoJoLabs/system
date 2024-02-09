@@ -1,8 +1,8 @@
-{ flake_uri ? "github:jojolabs/system#joris@linux", ... }: { }: {
+{ flakeURI ? "github:jojolabs/system#joris@linux", ... }: {
   system.autoUpgrade = {
     enable = true;
     flags = ["--update-input" "nixpkgs"];
-    flake = toString flake_uri;
+    flake = toString flakeURI;
     dates = "hourly";
     allowReboot = true;
     randomizedDelaySec = "45min";
