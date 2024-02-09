@@ -12,7 +12,7 @@
 
   sops.defaultSopsFile = "${toString self}/secrets/sops.yaml";
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-  sops.secrets.example-key = {};
+  sops.secrets.github_private_key = {};
 
   systemd.services.inception = {
     description = "Self-bootstrap a NixOS installation";
@@ -22,7 +22,9 @@
     script = with pkgs; ''
       sleep 5
       mkdir -p /mnt/etc/nixos/
-      ${config.system.build.nixos-install}/bin/nixos-install -j 4
+      eval "$(ssh-agent -s)"
+      ssh-add ${config.sops.secrets.github_private_key.path}      
+      ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake git@github.com:JoJoLabs/system.git#joris@x86_64-linux
       ${systemd}/bin/shutdown -r now
     '';
     environment = config.nix.envVars // {
