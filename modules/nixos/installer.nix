@@ -29,7 +29,7 @@
       sleep 15
       ${nix}/bin/nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ${toString self}/modules/disko/default.nix
       mkdir -p /mnt/etc/nixos/   
-      ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake github:JoJoLabs/system#joris@linux --no-root-passwd
+      ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake github:jojolabs/system#joris@linux --no-root-passwd
       ${systemd}/bin/shutdown -r now
     '';
     environment = config.nix.envVars // {

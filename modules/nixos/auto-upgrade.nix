@@ -1,4 +1,4 @@
-{ flake_uri ? "${config.flake.uri}"} : {
+{ flake_uri ? "github:jojolabs/system#joris@linux"} : {
   system.autoUpgrade = {
     enable = true;
     flags = ["--update-input" "nixpkgs"];
