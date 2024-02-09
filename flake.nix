@@ -190,19 +190,9 @@
         ];
         extraModules = [./profiles/default.nix];
       };
-      "kubenode-installer" = mkNixosConfig {
-        system = "x86_64-linux";
-        hardwareModules = [
-          ./modules/hardware/rhel-vm.nix
-        ];
-        extraModules = [
-          ./profiles/default.nix
-        ];
-      };
     };
 
     packages.x86_64-linux = {
-
       kubenode-installer = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         specialArgs = {inherit self inputs;};
