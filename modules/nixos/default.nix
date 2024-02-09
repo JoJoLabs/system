@@ -30,10 +30,10 @@
   };
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = lib.mkDefault true;
 
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
+  boot.loader.grub.enable = lib.mkDefault true;
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
   # boot.loader.grub.efiSupport = true;
@@ -43,7 +43,7 @@
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = true;
+  networking.useDHCP = lib.mkDefault true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
