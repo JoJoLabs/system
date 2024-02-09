@@ -1,5 +1,4 @@
-{ ... }: {
-
+{ config, ... }: {
   options = {
     flakeURI = mkOption {
       type = types.string;
