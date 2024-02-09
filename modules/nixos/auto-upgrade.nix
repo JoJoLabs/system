@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, lib, ... }: {
   options = {
     flakeURI = lib.mkOption {
       type = types.string;
