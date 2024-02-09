@@ -10,9 +10,9 @@
     { mountPoint = "/"; fsType = "ext4"; label = "root"; }
   ];
 
-  sops.defaultSopsFile = "${toString self}/secrets/sops.yaml";
+  # sops.defaultSopsFile = "${toString self}/secrets/sops.yaml";
   # sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-  sops.secrets.github_private_key = {};
+  # sops.secrets.github_private_key = {};
 
   systemd.services.inception = {
     description = "Self-bootstrap a NixOS installation";
@@ -20,9 +20,9 @@
     after = [ "network.target" "polkit.service" ];
     path = [ "/run/current-system/sw/" ];
     script = with pkgs; ''
-      sleep 5
+      sleep 60
       mkdir -p /mnt/etc/nixos/   
-      ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake git@github.com:JoJoLabs/system.git#joris@x86_64-linux
+      ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake git+ssh://git@github.com/JoJoLabs/system#joris@x86_64-linux --no-root-passwd
       ${systemd}/bin/shutdown -r now
     '';
     environment = config.nix.envVars // {
