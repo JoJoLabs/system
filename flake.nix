@@ -208,9 +208,6 @@
           disko.nixosModules.disko
           sops-nix.nixosModules.sops
           ./modules/disko/default.nix
-          {
-            _module.args.disks = [ "/dev/vda" ];
-          }
           ./modules/nixos/installer.nix
         ];
         format = "install-iso";
