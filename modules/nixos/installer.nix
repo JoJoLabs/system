@@ -11,7 +11,7 @@
   ];
 
   sops.defaultSopsFile = "${toString self}/secrets/sops.yaml";
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  # sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets.github_private_key = {};
 
   systemd.services.inception = {
