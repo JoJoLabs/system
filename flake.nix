@@ -181,7 +181,7 @@
     # };
 
     nixosConfigurations = {
-      "joris@x86_64-linux" = mkNixosConfig {
+      "joris@linux" = mkNixosConfig {
         system = "x86_64-linux";
         hardwareModules = [
           disko.nixosModules.disko
