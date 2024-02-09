@@ -21,9 +21,7 @@
     path = [ "/run/current-system/sw/" ];
     script = with pkgs; ''
       sleep 5
-      mkdir -p /mnt/etc/nixos/
-      eval "$(ssh-agent -s)"
-      ssh-add ${config.sops.secrets.github_private_key.path}      
+      mkdir -p /mnt/etc/nixos/   
       ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake git@github.com:JoJoLabs/system.git#joris@x86_64-linux
       ${systemd}/bin/shutdown -r now
     '';
