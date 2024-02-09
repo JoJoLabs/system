@@ -41,6 +41,7 @@
   boot.loader.grub.efiSupport = lib.mkDefault true;
   boot.loader.grub.efiInstallAsRemovable = lib.mkDefault true;
   # Define on which hard drive you want to install Grub.
+  ### Managed by disko ###
   # boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
   # boot.loader.grub.efiSupport = true;
   # boot.loader.grub.efiInstallAsRemovable = true;
@@ -51,19 +52,17 @@
   # replicates the default behaviour.
   networking.useDHCP = lib.mkDefault true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = pkgs.jetbrains-mono;
-  #   keyMap = "us";
-  # };
+  console = {
+    font = pkgs.jetbrains-mono;
+    keyMap = "us";
+  };
 
   # Set your time zone.
-  # time.timeZone = "EST";
+  time.timeZone = "PST";
   services.geoclue2.enable = true;
   services.localtimed.enable = true;
 
@@ -80,40 +79,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = false;
-
-  # Enable sound.
-  # sound.enable = false;
-  # hardware.pulseaudio.enable = false;
-
-  # Enable the X11 windowing system.
-  # services.xserver = {
-  #   enable = false;
-  #   layout = "us";
-  #   # services.xserver.xkbOptions = "eurosign:e";
-
-  #   # Enable touchpad support.
-  #   libinput.enable = true;
-
-  #   # Enable the KDE Desktop Environment.
-  #   # services.xserver.displayManager.sddm.enable = true;
-  #   # services.xserver.desktopManager.plasma5.enable = true;
-  #   displayManager = {
-  #     gdm = {
-  #       enable = true;
-  #       wayland = true;
-  #     };
-  #   };
-  #   desktopManager.gnome.enable = true;
-  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
