@@ -184,6 +184,8 @@
       "joris@x86_64-linux" = mkNixosConfig {
         system = "x86_64-linux";
         hardwareModules = [
+          disko.nixosModules.disko
+          ./modules/disko/default.nix
           ./modules/hardware/rhel-vm.nix
         ];
         extraModules = [./profiles/default.nix];
