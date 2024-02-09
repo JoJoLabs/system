@@ -20,16 +20,25 @@
     git
   ];
 
+  tools = lib.makeBinPath (
+    with pkgs; [
+      config.system.build.nixos-enter
+      config.system.build.nixos-install
+      nix
+      parted
+    ]
+  );
+
   systemd.services.inception = {
     description = "Self-bootstrap a NixOS installation";
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" "polkit.service" ];
-    path = [ "/run/current-system/sw/bin" ];
+    path = [ "${tools}" ];
     script = with pkgs; ''
       sleep 60
-      nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ${toString self}/modules/disko/disko-config.nix
+      ${config.system.build.nix}/bin/nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ${toString self}/modules/disko/disko-config.nix
       mkdir -p /mnt/etc/nixos/   
-      nixos-install --experimental-features "nix-command flakes" -j 4 --flake git+ssh://git@github.com/JoJoLabs/system#joris@x86_64-linux --no-root-passwd
+      ${config.system.build.nixos-install}/bin/nixos-install --experimental-features "nix-command flakes" -j 4 --flake git+ssh://git@github.com/JoJoLabs/system#joris@x86_64-linux --no-root-passwd
       ${systemd}/bin/shutdown -r now
     '';
     environment = config.nix.envVars // {
