@@ -2,7 +2,7 @@
   system.autoUpgrade = {
     enable = true;
     flags = ["--update-input" "nixpkgs"];
-    flake = flake_uri;
+    flake = "${flake_uri}";
     dates = "hourly";
     allowReboot = true;
     randomizedDelaySec = "45min";
