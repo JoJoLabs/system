@@ -26,6 +26,9 @@
         isNormalUser = true;
         extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
         hashedPassword = "$y$j9T$rVX/VI1C0nwrX8LSSOX2A.$eI2I8JWyLNKS0Z1FeH.MrcAsG8fwRmIM40A9CWvQuj4";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG/9Su+30SG1ajlNedNtTwrO2Pmmf/VdJv1uPc3Hbx4l joris@jojolabs.com"
+        ];
       };
     };
   };
