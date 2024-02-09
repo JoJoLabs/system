@@ -26,10 +26,10 @@
     after = [ "network.target" "polkit.service" ];
     path = [ "/run/current-system/sw/" ];
     script = with pkgs; ''
-      sleep 5
+      sleep 15
       ${nix}/bin/nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ${toString self}/modules/disko/default.nix
       mkdir -p /mnt/etc/nixos/   
-      ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake https://github.com/JoJoLabs/system#joris@x86_64-linux --no-root-passwd
+      ${config.system.build.nixos-install}/bin/nixos-install -j 4 --flake github:JoJoLabs/system#joris@x86_64-linux --no-root-passwd
       ${systemd}/bin/shutdown -r now
     '';
     environment = config.nix.envVars // {
