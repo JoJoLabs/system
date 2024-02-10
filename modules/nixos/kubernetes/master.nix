@@ -7,9 +7,6 @@ let
   kubeMasterAPIServerPort = 6443;
 in
 {
-  # resolve master hostname
-  networking.extraHosts = "${kubeMasterIP} ${kubeMasterHostname}";
-
   # packages for administration tasks
   environment.systemPackages = with pkgs; [
     kompose

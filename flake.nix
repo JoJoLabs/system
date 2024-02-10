@@ -204,6 +204,20 @@
           ./modules/nixos/kubernetes/master.nix
         ];
       };
+      "kubenode" = mkNixosConfig {
+        system = "x86_64-linux";
+        hardwareModules = [
+          disko.nixosModules.disko
+          ./modules/disko/default.nix
+          ./modules/hardware/rhel-vm.nix
+        ];
+        extraModules = [
+          ./modules/flakes.nix
+          ./profiles/default.nix
+          ./profiles/kubenode.nix
+          ./modules/nixos/kubernetes/node.nix
+        ];
+      };
     };
 
     packages.x86_64-linux = {
@@ -216,6 +230,19 @@
           ./modules/disko/default.nix
           ./modules/flakes.nix
           ./profiles/kubemaster.nix
+          ./modules/nixos/installer.nix
+        ];
+        format = "install-iso";
+      };
+      kubenode-installer = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        specialArgs = {inherit self inputs;};
+        modules = [
+          disko.nixosModules.disko
+          sops-nix.nixosModules.sops
+          ./modules/disko/default.nix
+          ./modules/flakes.nix
+          ./profiles/kubenode.nix
           ./modules/nixos/installer.nix
         ];
         format = "install-iso";
