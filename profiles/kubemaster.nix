@@ -1,4 +1,4 @@
 { lib, ... }: {
-  include = [ ./default.nix ]
-  flakeURI = "github:jojolabs/system#kubemaster"
+  imports = [ ./default.nix ];
+  flakeURI = "github:jojolabs/system#kubemaster";
 }
