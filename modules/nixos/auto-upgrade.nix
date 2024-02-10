@@ -9,7 +9,7 @@
   config = {
     system.autoUpgrade = {
       enable = true;
-      flags = ["--update-input" "nixpkgs"];
+      flags = ["--update-input" "nixpkgs" "--no-write-lock-file"];
       flake = config.flakeURI;
       dates = "hourly";
       allowReboot = true;
