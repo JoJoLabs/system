@@ -199,6 +199,7 @@
         ];
         extraModules = [
           ./modules/flakes.nix
+          ./profiles/default.nix
           ./profiles/kubemaster.nix
           ./modules/nixos/kubernetes/master.nix
         ];
