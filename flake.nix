@@ -212,7 +212,7 @@
           disko.nixosModules.disko
           sops-nix.nixosModules.sops
           ./modules/disko/default.nix
-          ./modules/nixos/alias.nix
+          ./modules/flakes.nix
           ./profiles/kubemaster.nix
           ./modules/nixos/installer.nix
         ];

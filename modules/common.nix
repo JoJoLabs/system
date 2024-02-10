@@ -6,8 +6,9 @@
   ...
 }: {
   imports = [
-    ./alias.nix
+    ./primaryUser.nix
     ./nixpkgs.nix
+    ./flakes.nix
   ];
 
   nixpkgs.overlays = builtins.attrValues self.overlays;
