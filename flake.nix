@@ -198,6 +198,7 @@
           ./modules/hardware/rhel-vm.nix
         ];
         extraModules = [
+          ./modules/flakes.nix
           ./profiles/kubemaster.nix
           ./modules/nixos/kubernetes/master.nix
         ];
