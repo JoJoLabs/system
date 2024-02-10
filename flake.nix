@@ -212,6 +212,7 @@
           disko.nixosModules.disko
           sops-nix.nixosModules.sops
           ./modules/disko/default.nix
+          ./modules/nixos/common.nix
           ./profiles/kubemaster.nix
           ./modules/nixos/installer.nix
         ];
