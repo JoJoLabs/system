@@ -190,16 +190,29 @@
         ];
         extraModules = [./profiles/default.nix];
       };
+      "kubemaster" = mkNixosConfig {
+        system = "x86_64-linux";
+        hardwareModules = [
+          disko.nixosModules.disko
+          ./modules/disko/default.nix
+          ./modules/hardware/rhel-vm.nix
+        ];
+        extraModules = [
+          ./profiles/kubemaster.nix
+          ./modules/nixos/kubernetes/master.nix
+        ];
+      };
     };
 
     packages.x86_64-linux = {
-      kubenode-installer = nixos-generators.nixosGenerate {
+      kubemaster-installer = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         specialArgs = {inherit self inputs;};
         modules = [
           disko.nixosModules.disko
           sops-nix.nixosModules.sops
           ./modules/disko/default.nix
+          ./profiles/kubemaster.nix
           ./modules/nixos/installer.nix
         ];
         format = "install-iso";

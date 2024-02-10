@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./primaryUser.nix
+    ./alias.nix
     ./nixpkgs.nix
   ];
 

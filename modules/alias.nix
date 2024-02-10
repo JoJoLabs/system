@@ -20,7 +20,13 @@ in {
       type = types.attrs;
       default = {};
     };
+
+    flakeURI = mkOption {
+      type = types.str;
+      default = "github:jojolabs/system#joris@linux";
+    };
   };
+
 
   config = {
     # hm -> home-manager.users.<primary user>
