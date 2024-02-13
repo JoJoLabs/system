@@ -5,7 +5,7 @@ let
   # kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName";
   kubeNodeHostname = "nixos";
   output = pkgs.runCommand "machineID" {} ''    
-    head -c 16 /dev/urandom | base64 | head -c 8 > $out
+    head -c 16 /dev/urandom | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
   '';
 in
 {
