@@ -30,7 +30,7 @@ in
 
     output = pkgs.runCommand "machineID" {} ''    
     head -c 8 /etc/machine-id > $out
-    ''
+    '';
 
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
