@@ -2,7 +2,7 @@
 let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
-  kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName"
+  kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName";
 in
 {
   # packages for administration tasks
