@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
