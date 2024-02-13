@@ -4,7 +4,6 @@ let
   kubeMasterAPIServerPort = 6443;
   # kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName";
   kubeNodeHostname = "nixos";
-  machineID = lib.strings.substring 0 8 (builtins.readFile "/etc/machine-id");
 in
 {
   # packages for administration tasks
@@ -29,8 +28,12 @@ in
     # use coredns
     addons.dns.enable = true;
 
+    output = pkgs.runCommand "machineID" {} ''    
+    head -c 8 /etc/machine-id > $out
+    ''
+
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
-    kubelet.hostname = "${kubeNodeHostname}-${machineID}";
+    kubelet.hostname = "${kubeNodeHostname}-${output}";
   };
 }
