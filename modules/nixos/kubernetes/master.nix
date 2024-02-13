@@ -14,6 +14,11 @@ in
     kubernetes
   ];
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 6443 8888 ];
+  };
+
   services.kubernetes = {
     roles = ["master" "node"];
     masterAddress = kubeMasterHostname;
