@@ -33,6 +33,6 @@ in
 
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
-    kubelet.hostname = "${kubeNodeHostname}-${toString output}";
+    kubelet.hostname = "${kubeNodeHostname}-${builtins.readFile output}";
   };
 }
