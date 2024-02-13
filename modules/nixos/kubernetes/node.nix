@@ -2,6 +2,7 @@
 let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
+  kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName"
 in
 {
   # packages for administration tasks
@@ -28,5 +29,6 @@ in
 
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
+    kubelet.hostname = lib.strings.concatStrings [ kubeNodeHostname "-$(head -c 8 /etc/machine-id)" ]
   };
 }
