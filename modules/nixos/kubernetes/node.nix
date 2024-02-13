@@ -2,7 +2,8 @@
 let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
-  kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName";
+  # kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName";
+  kubeNodeHostname = "nixos";
   machineID = lib.strings.substring 0 8 (builtins.readFile "/etc/machine-id");
 in
 {
