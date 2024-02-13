@@ -15,8 +15,8 @@ in
   ];
 
   networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 6443 8888 ];
+    enable = false;
+    # allowedTCPPorts = [ 22 6443 8888 ];
   };
 
   services.kubernetes = {
