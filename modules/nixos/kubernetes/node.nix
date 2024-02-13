@@ -29,6 +29,6 @@ in
 
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
-    kubelet.hostname = "nixos-$(head -c 8 /etc/machine-id)";
+    kubelet.hostname = "\"nixos-$(head -c 8 /etc/machine-id)\"";
   };
 }
