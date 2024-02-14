@@ -6,8 +6,8 @@
   inputs = {
     # package repos
     stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs.url = "github:JorisBolsens/nixpkgs/patch-2";
-    nixos-unstable.url = "github:JorisBolsens/nixpkgs/patch-2";
+    nixpkgs.url = "github:JorisBolsens/nixpkgs/patch-3";
+    nixos-unstable.url = "github:JorisBolsens/nixpkgs/patch-3";
     devenv.url = "github:cachix/devenv/latest";
 
     # system management
