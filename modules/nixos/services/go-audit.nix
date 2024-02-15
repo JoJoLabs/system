@@ -86,7 +86,7 @@ with lib;
           # Watch all 32 bit program executions
           # - -a exit,always -F arch=b32 -S execve
           # Watch kubernete lib folder
-          - -a exit,always  -F dir=/var/lib/kubernetes  -p wa -F key=kubernetes_lib
+          - -a exit,always -F dir=/var/lib/kubernetes -p wa -F key=kubernetes_lib
           # Enable kernel auditing (required if not done via the "audit" kernel boot parameter)
           # You can also use this to lock the rules. Locking requires a reboot to modify the ruleset.
           # This should be the last rule in the chain.
