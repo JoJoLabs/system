@@ -4,6 +4,7 @@ with lib;
   # options.security.go-audit.enable = mkEnableOption (lib.mdDoc "the Linux go-audit daemon");
   environment.systemPackages = with pkgs; [
     go-audit
+    audit
   ];
 
   environment.etc = {
