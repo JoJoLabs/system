@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, lib, ... }: 
 with lib;
 {
   # options.security.go-audit.enable = mkEnableOption (lib.mdDoc "the Linux go-audit daemon");
