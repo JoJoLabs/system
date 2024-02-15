@@ -22,8 +22,6 @@ in
     # allowedTCPPorts = [ 22 6443 8888 ];
   };
 
-  security.auditd.enable = true;
-
   services.kubernetes = {
     roles = ["master" "node"];
     masterAddress = kubeMasterHostname;

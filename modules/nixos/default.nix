@@ -5,7 +5,7 @@
   ...
 }: {
   # bundles essential nixos modules
-  imports = [../common.nix ./auto-upgrade.nix];
+  imports = [../common.nix ./auto-upgrade.nix ./services];
 
   services.syncthing = {
     enable = true;
