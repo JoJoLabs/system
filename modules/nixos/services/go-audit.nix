@@ -134,7 +134,7 @@ with lib;
     after = [ "network.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.go-audit}/bin/go-audit -c /etc/go-audit.yaml";
-      Type = "simple"
+      Type = "simple";
     };
   };
 
