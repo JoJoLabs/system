@@ -82,9 +82,9 @@ with lib;
 
         rules:
           # Watch all 64 bit program executions
-          - -a exit,always -F arch=b64 -S execve
+          # - -a exit,always -F arch=b64 -S execve
           # Watch all 32 bit program executions
-          - -a exit,always -F arch=b32 -S execve
+          # - -a exit,always -F arch=b32 -S execve
           # Watch kubernete lib folder
           - -a exit,always  -F dir=/var/lib/kubernetes  -p wa -F key=kubernetes_lib
           # Enable kernel auditing (required if not done via the "audit" kernel boot parameter)
