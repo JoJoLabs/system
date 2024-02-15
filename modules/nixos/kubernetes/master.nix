@@ -6,7 +6,7 @@ let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
   uid = pkgs.runCommand "uid" {} ''    
-    ${pkgs.nix}/bin/nix --experimental-features "nix-command flakes" run nixpkgs#dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
+    dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
   '';
 in
 {
@@ -15,6 +15,7 @@ in
     kompose
     kubectl
     kubernetes
+    dmidecode
   ];
 
   networking.firewall = {
