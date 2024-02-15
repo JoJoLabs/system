@@ -133,7 +133,9 @@ with lib;
     description = "go-audit service";
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
-    path = with pkgs; [];
+    path = with pkgs; [
+      audit
+    ];
     serviceConfig = {
       ExecStart = "${pkgs.go-audit}/bin/go-audit -config /etc/go-audit.yaml";
       Type = "simple";
