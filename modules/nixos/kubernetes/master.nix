@@ -5,9 +5,9 @@ let
   kubeMasterIP = "10.25.25.2";
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
-  uid = pkgs.runCommand "uid" {} ''    
-    ${pkgs.dmidecode}/bin/dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
-  '';
+  # uid = pkgs.runCommand "uid" {} ''    
+  #   ${pkgs.dmidecode}/bin/dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
+  # '';
 in
 {
   # packages for administration tasks
@@ -38,6 +38,6 @@ in
 
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
-    kubelet.hostname = "master-${builtins.readFile uid}";
+    kubelet.hostname = "master-uid";
   };
 }
