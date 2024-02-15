@@ -6,7 +6,7 @@ let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
   uid = pkgs.runCommand "uid" {} ''    
-    dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
+    ${pkgs.dmidecode}/bin/dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
   '';
 in
 {
