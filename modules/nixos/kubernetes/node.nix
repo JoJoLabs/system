@@ -2,10 +2,8 @@
 let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
-  # kubeNodeHostname = lib.literalExpression "config.networking.fqdnOrHostName";
-  kubeNodeHostname = "nixos";
-  output = pkgs.runCommand "machineID" {} ''    
-    head -c 16 /dev/urandom | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
+  uid = pkgs.runCommand "uid" {} ''    
+    ${nix}/bin/nix run nixpkgs#dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
   '';
 in
 {
@@ -33,6 +31,6 @@ in
 
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
-    kubelet.hostname = "${kubeNodeHostname}-${builtins.readFile output}";
+    kubelet.hostname = "worker-${builtins.readFile uid}";
   };
 }
