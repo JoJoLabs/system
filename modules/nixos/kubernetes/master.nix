@@ -6,7 +6,7 @@ let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
   uid = pkgs.runCommand "uid" {} ''    
-    ${nix}/bin/nix run nixpkgs#dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
+    ${pkgs.nix}/bin/nix run nixpkgs#dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
   '';
 in
 {
