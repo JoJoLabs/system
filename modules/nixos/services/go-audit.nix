@@ -41,12 +41,12 @@ with lib;
           # Writes to stdout
           # All program status logging will be moved to stderr
           stdout:
-            enabled: true
+            enabled: false
 
             # Total number of attempts to write a line before considering giving up
             # If a write fails go-audit will sleep for 1 second before retrying
             # Default is 3
-            attempts: 2
+            # attempts: 2
 
           # Appends logs to a file
           file:
@@ -77,7 +77,7 @@ with lib;
           # LUTC          = 32 // if Ldate or Ltime is set, use UTC rather than the local time zone
           #
           # See also: https://golang.org/pkg/log/#pkg-constants
-          flags: 0
+          flags: 2
 
         rules:
           # Watch all 64 bit program executions
