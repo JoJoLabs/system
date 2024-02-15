@@ -8,8 +8,8 @@ with lib;
 
   environment.etc = {
     # Creates /etc/go-audit.yaml
-    nanorc = {
-      go-audit.yaml = ''
+    go-audit.yaml = {
+      text = ''
         # Configure socket buffers, leave unset to use the system defaults
         # Values will be doubled by the kernel
         # It is recommended you do not set any of these values unless you really need to
