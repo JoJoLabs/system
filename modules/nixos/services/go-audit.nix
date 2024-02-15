@@ -8,7 +8,7 @@ with lib;
 
   environment.etc = {
     # Creates /etc/go-audit.yaml
-    go-audit.yaml = {
+    "go-audit.yaml" = {
       text = ''
         # Configure socket buffers, leave unset to use the system defaults
         # Values will be doubled by the kernel
