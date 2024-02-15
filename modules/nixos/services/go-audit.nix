@@ -133,7 +133,7 @@ with lib;
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.go-audit}/bin/go-audit -c /etc/go-audit.yaml";
+      ExecStart = "${pkgs.go-audit}/bin/go-audit -config /etc/go-audit.yaml";
       Type = "simple";
     };
   };
