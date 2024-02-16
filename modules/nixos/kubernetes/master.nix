@@ -12,6 +12,8 @@ in
 {
   # packages for administration tasks
   environment.systemPackages = with pkgs; [
+    kubectl
+    kubernetes
     dmidecode
   ];
 
