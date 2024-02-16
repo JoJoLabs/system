@@ -7,14 +7,6 @@
   # bundles essential nixos modules
   imports = [../common.nix ./auto-upgrade.nix ./services];
 
-  services.syncthing = {
-    enable = true;
-    user = config.user.name;
-    group = "users";
-    openDefaultPorts = true;
-    dataDir = config.user.home;
-  };
-
   environment.systemPackages = with pkgs; [vscode firefox];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

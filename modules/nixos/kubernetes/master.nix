@@ -12,9 +12,6 @@ in
 {
   # packages for administration tasks
   environment.systemPackages = with pkgs; [
-    kompose
-    kubectl
-    kubernetes
     dmidecode
   ];
 
