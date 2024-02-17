@@ -202,6 +202,7 @@
           ./profiles/default.nix
           ./profiles/kubemaster.nix
           ./modules/nixos/kubernetes/master.nix
+          ./modules/nixos/services/auto-hostname.nix
         ];
       };
       "kubenode" = mkNixosConfig {
