@@ -6,7 +6,7 @@
   systemd.services.inception = {
     description = "set hostname based on system uuid";
     wantedBy = [ "multi-user.target" ];
-    RequiredBy = [ "network.service" ];
+    requiredBy = [ "network.service" ];
     path = [ "/run/current-system/sw/" ];
     script = with pkgs; ''
       uuid=$(${pkgs.dmidecode}/bin/dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]')
