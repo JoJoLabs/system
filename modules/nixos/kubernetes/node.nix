@@ -2,9 +2,6 @@
 let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
-  uid = pkgs.runCommand "uid" {} ''    
-    ${pkgs.nix}/bin/nix --experimental-features "nix-command" run nixpkgs#dmidecode -- -s system-uuid | base64 | head -c 8 | tr '[:upper:]' '[:lower:]' > $out
-  '';
 in
 {
   # packages for administration tasks
@@ -31,6 +28,5 @@ in
 
     # needed if you use swap
     kubelet.extraOpts = "--fail-swap-on=false";
-    kubelet.hostname = "worker-${builtins.readFile uid}";
   };
 }
