@@ -29,7 +29,7 @@ in
       authorizationMode = [
         "AlwaysAllow"
         "Node"
-      ]
+      ];
     };
 
     # use coredns
