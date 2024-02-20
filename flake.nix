@@ -6,8 +6,8 @@
   inputs = {
     # package repos
     stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:jorisbolsens/nixpkgs/patch-4";
+    nixos-unstable.url = "github:jorisbolsens/nixpkgs/patch-4";
     devenv.url = "github:cachix/devenv/latest";
 
     # system management
@@ -201,7 +201,7 @@
           ./modules/flakes.nix
           ./profiles/default.nix
           ./profiles/kubemaster.nix
-          ./modules/nixos/kubernetes/master.nix
+          # ./modules/nixos/kubernetes/master.nix
           ./modules/nixos/services/auto-hostname.nix
         ];
       };
@@ -216,7 +216,7 @@
           ./modules/flakes.nix
           ./profiles/default.nix
           ./profiles/kubenode.nix
-          ./modules/nixos/kubernetes/node.nix
+          # ./modules/nixos/kubernetes/node.nix
           ./modules/nixos/services/auto-hostname.nix
         ];
       };
