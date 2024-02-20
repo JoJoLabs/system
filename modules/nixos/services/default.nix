@@ -1,4 +1,4 @@
 { ... }: 
 {
-  imports = [./go-audit.nix];
+  # imports = [./go-audit.nix];
 }
