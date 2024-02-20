@@ -216,7 +216,7 @@
           ./modules/flakes.nix
           ./profiles/default.nix
           ./profiles/kubenode.nix
-          # ./modules/nixos/kubernetes/node.nix
+          ./modules/nixos/kubernetes/node.nix
           ./modules/nixos/services/auto-hostname.nix
         ];
       };
