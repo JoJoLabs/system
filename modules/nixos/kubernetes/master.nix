@@ -26,10 +26,10 @@ in
     apiserver = {
       securePort = kubeMasterAPIServerPort;
       advertiseAddress = kubeMasterIP;
-      authorizationMode = [
-        "AlwaysAllow"
-        "Node"
-      ];
+      # authorizationMode = [
+      #   "AlwaysAllow"
+      #   "Node"
+      # ];
     };
 
     # use coredns
