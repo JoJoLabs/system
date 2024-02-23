@@ -25,7 +25,6 @@
     };
   };
 
-  networking.hostName = ""; # Define your hostname.
   networking.networkmanager.enable = lib.mkDefault true;
 
   # Use the GRUB 2 boot loader.

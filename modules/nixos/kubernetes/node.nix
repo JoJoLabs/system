@@ -11,6 +11,8 @@ in
     kubernetes
   ];
 
+  networking.hostName = "nixos-worker";
+
   services.kubernetes = let
     api = "https://${kubeMasterHostname}:${toString kubeMasterAPIServerPort}";
   in
