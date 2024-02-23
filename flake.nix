@@ -201,7 +201,7 @@
           ./modules/flakes.nix
           ./profiles/default.nix
           ./profiles/kubemaster.nix
-          ./modules/nixos/kubernetes/master.nix
+          # ./modules/nixos/kubernetes/master.nix
         ];
       };
       "kubenode" = mkNixosConfig {
@@ -215,7 +215,7 @@
           ./modules/flakes.nix
           ./profiles/default.nix
           ./profiles/kubenode.nix
-          ./modules/nixos/kubernetes/node.nix
+          # ./modules/nixos/kubernetes/node.nix
         ];
       };
     };
