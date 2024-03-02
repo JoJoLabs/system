@@ -1,4 +1,4 @@
-{ hostname ? "nixos-worker" =, config, pkgs, lib, ... }:
+{ hostname ? "nixos-worker", config, pkgs, lib, ... }:
 let
   kubeMasterHostname = "api.kube.jojolabs.cloud";
   kubeMasterAPIServerPort = 6443;
