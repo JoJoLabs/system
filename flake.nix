@@ -204,7 +204,7 @@
           ./modules/nixos/kubernetes/master.nix
         ];
       };
-      "kubenode" = mkNixosConfig {
+      "kubenode1" = mkNixosConfig {
         system = "x86_64-linux";
         hardwareModules = [
           disko.nixosModules.disko
@@ -215,7 +215,53 @@
           ./modules/flakes.nix
           ./profiles/default.nix
           ./profiles/kubenode.nix
+          {
+            _module.args.flake = "github:jojolabs/system#kubenode1";
+          }
           ./modules/nixos/kubernetes/node.nix
+          {
+            _module.args.hostname = "nixos-worker-01";
+          }
+        ];
+      };
+      "kubenode2" = mkNixosConfig {
+        system = "x86_64-linux";
+        hardwareModules = [
+          disko.nixosModules.disko
+          ./modules/disko/default.nix
+          ./modules/hardware/rhel-vm.nix
+        ];
+        extraModules = [
+          ./modules/flakes.nix
+          ./profiles/default.nix
+          ./profiles/kubenode.nix
+          {
+            _module.args.flake = "github:jojolabs/system#kubenode2";
+          }
+          ./modules/nixos/kubernetes/node.nix
+          {
+            _module.args.hostname = "nixos-worker-02";
+          }
+        ];
+      };
+      "kubenode3" = mkNixosConfig {
+        system = "x86_64-linux";
+        hardwareModules = [
+          disko.nixosModules.disko
+          ./modules/disko/default.nix
+          ./modules/hardware/rhel-vm.nix
+        ];
+        extraModules = [
+          ./modules/flakes.nix
+          ./profiles/default.nix
+          ./profiles/kubenode.nix
+          {
+            _module.args.flake = "github:jojolabs/system#kubenode3";
+          }
+          ./modules/nixos/kubernetes/node.nix
+          {
+            _module.args.hostname = "nixos-worker-03";
+          }
         ];
       };
     };
@@ -234,7 +280,7 @@
         ];
         format = "install-iso";
       };
-      kubenode-installer = nixos-generators.nixosGenerate {
+      kubenode1-installer = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         specialArgs = {inherit self inputs;};
         modules = [
@@ -243,6 +289,41 @@
           ./modules/disko/default.nix
           ./modules/flakes.nix
           ./profiles/kubenode.nix
+          {
+            _module.args.flake = "github:jojolabs/system#kubenode1";
+          }
+          ./modules/nixos/installer.nix
+        ];
+        format = "install-iso";
+      };
+      kubenode2-installer = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        specialArgs = {inherit self inputs;};
+        modules = [
+          disko.nixosModules.disko
+          sops-nix.nixosModules.sops
+          ./modules/disko/default.nix
+          ./modules/flakes.nix
+          ./profiles/kubenode.nix
+          {
+            _module.args.flake = "github:jojolabs/system#kubenode2";
+          }
+          ./modules/nixos/installer.nix
+        ];
+        format = "install-iso";
+      };
+      kubenode3-installer = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        specialArgs = {inherit self inputs;};
+        modules = [
+          disko.nixosModules.disko
+          sops-nix.nixosModules.sops
+          ./modules/disko/default.nix
+          ./modules/flakes.nix
+          ./profiles/kubenode.nix
+          {
+            _module.args.flake = "github:jojolabs/system#kubenode3";
+          }
           ./modules/nixos/installer.nix
         ];
         format = "install-iso";

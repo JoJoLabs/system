@@ -1,3 +1,3 @@
-{ lib, ... }: {
-  flakeURI = "github:jojolabs/system#kubenode";
+{ flake ? "github:jojolabs/system#kubenode", lib, ... }: {
+  flakeURI = flake;
 }
