@@ -16,7 +16,6 @@ in
   networking.hostName = "nixos-master";
   networking.firewall = {
     enable = false;
-    # allowedTCPPorts = [ 22 6443 8888 ];
   };
 
   services.kubernetes = {
