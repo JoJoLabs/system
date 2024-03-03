@@ -14,7 +14,14 @@ in
 
   networking.hostName = hostname;
   networking.firewall = {
-    enable = false;
+    enable = true;
+    allowedTCPPOrts = [
+      443
+      6443
+      80
+      15021
+      15017
+    ];
   };
 
   services.kubernetes = let
