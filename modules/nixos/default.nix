@@ -42,7 +42,7 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = lib.mkDefault true;
-  networking.domain = lib.mkDefault "jojolabs.cloud"
+  networking.domain = lib.mkDefault "jojolabs.cloud";
 
 
   # Select internationalisation properties.
