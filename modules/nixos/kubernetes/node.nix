@@ -28,7 +28,7 @@ in
       "enp1s0"
       "flannel.1"
       "mynet"
-    }
+    };
   };
 
   services.kubernetes = let
