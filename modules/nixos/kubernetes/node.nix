@@ -12,9 +12,9 @@ in
   ];
 
   networking.hostName = hostname;
-  networking.firewall = {
-    enable = false;
-  };
+  # networking.firewall = {
+  #   enable = false;
+  # };
 
   services.kubernetes = let
     api = "https://${kubeMasterHostname}:${toString kubeMasterAPIServerPort}";

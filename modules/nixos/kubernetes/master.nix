@@ -14,9 +14,9 @@ in
   ];
 
   networking.hostName = "nixos-master";
-  networking.firewall = {
-    enable = false;
-  };
+  # networking.firewall = {
+  #   enable = false;
+  # };
 
   services.kubernetes = {
     roles = ["master" "node"];
