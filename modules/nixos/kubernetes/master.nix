@@ -27,6 +27,7 @@ in
     apiserver = {
       securePort = kubeMasterAPIServerPort;
       advertiseAddress = kubeMasterIP;
+      preferredAddressTypes = "InternalIP"
       # authorizationMode = [
       #   "AlwaysAllow"
       #   "Node"
