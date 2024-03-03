@@ -9,12 +9,13 @@ in
     kompose
     kubectl
     kubernetes
+    iptables
   ];
 
   networking.hostName = hostname;
-  # networking.firewall = {
-  #   enable = false;
-  # };
+  networking.firewall = {
+    enable = false;
+  };
 
   services.kubernetes = let
     api = "https://${kubeMasterHostname}:${toString kubeMasterAPIServerPort}";
