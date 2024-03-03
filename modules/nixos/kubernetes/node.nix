@@ -15,7 +15,7 @@ in
   networking.hostName = hostname;
   networking.firewall = {
     enable = true;
-    allowedTCPPOrts = [
+    allowedTCPPorts = [
       443
       6443
       80

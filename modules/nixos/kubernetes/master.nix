@@ -17,7 +17,7 @@ in
   networking.hostName = "nixos-master";
   networking.firewall = {
     enable = true;
-    allowedTCPPOrts = [
+    allowedTCPPorts = [
       443
       6443
       80
