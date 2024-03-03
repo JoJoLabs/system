@@ -26,7 +26,6 @@ in
     apiserver = {
       securePort = kubeMasterAPIServerPort;
       advertiseAddress = kubeMasterIP;
-      preferredAddressTypes = "InternalIP";
     };
 
     # use coredns
