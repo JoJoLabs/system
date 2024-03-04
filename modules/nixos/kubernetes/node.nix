@@ -9,7 +9,14 @@ in
     kompose
     kubectl
     kubernetes
-    calico
+    calico-apiserver
+    calico-app-policy
+    calico-cni-plugin
+    calico-kube-controllers
+    calico-pod2daemon
+    calico-typha
+    calicoctl
+    confd-calico
   ];
 
   networking.hostName = hostname;

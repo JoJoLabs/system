@@ -11,7 +11,14 @@ in
   environment.systemPackages = with pkgs; [
     kubectl
     kubernetes
-    calico
+    calico-apiserver
+    calico-app-policy
+    calico-cni-plugin
+    calico-kube-controllers
+    calico-pod2daemon
+    calico-typha
+    calicoctl
+    confd-calico
   ];
 
   networking.hostName = "nixos-master";
