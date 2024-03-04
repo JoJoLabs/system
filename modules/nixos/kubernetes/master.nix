@@ -11,7 +11,7 @@ in
   environment.systemPackages = with pkgs; [
     kubectl
     kubernetes
-    iptables
+    calico
   ];
 
   networking.hostName = "nixos-master";

@@ -9,7 +9,7 @@ in
     kompose
     kubectl
     kubernetes
-    iptables
+    calico
   ];
 
   networking.hostName = hostname;
