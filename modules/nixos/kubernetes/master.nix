@@ -59,6 +59,7 @@ in
     apiserver = {
       securePort = kubeMasterAPIServerPort;
       advertiseAddress = kubeMasterIP;
+      allowPrivileged = true;
     };
 
     # use coredns
