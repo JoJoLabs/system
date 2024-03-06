@@ -7,6 +7,7 @@ let
   kubeMasterAPIServerPort = 6443;
 in
 {
+  imports = [ ./calico.nix ];
   # packages for administration tasks
   environment.systemPackages = with pkgs; [
     kubectl
