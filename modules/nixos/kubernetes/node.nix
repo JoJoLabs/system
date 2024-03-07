@@ -4,19 +4,13 @@ let
   kubeMasterAPIServerPort = 6443;
 in
 {
+  imports = [ ./calico.nix ];
   # packages for administration tasks
   environment.systemPackages = with pkgs; [
     kompose
     kubectl
     kubernetes
-    calico-apiserver
-    calico-app-policy
-    calico-cni-plugin
-    calico-kube-controllers
-    calico-pod2daemon
-    calico-typha
     calicoctl
-    confd-calico
   ];
 
   networking.hostName = hostname;
@@ -26,7 +20,9 @@ in
       443
       6443
       80
+      5473
       8080
+      8888
       15000
       15004
       15006
@@ -39,13 +35,13 @@ in
       15021
       15053
       15090
+      9099
+      9098
       2601
       22
     ];
     trustedInterfaces = [
       "enp1s0"
-      "flannel.1"
-      "mynet"
     ];
   };
 

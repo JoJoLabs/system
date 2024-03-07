@@ -6,6 +6,7 @@ let
 in
 {
   imports = [ ./typha.nix ];
+
   environment.systemPackages = with pkgs; [
     calicoctl
     calico-cni-plugin
@@ -19,53 +20,6 @@ in
       CN = "calico-cni";
     };
   };
-
-  services.kubernetes.kubelet = {
-      cni.configDir =(pkgs.buildEnv {
-        name = "kubernetes-cni-config";
-        paths = [
-          (pkgs.writeTextDir "10-calico.conflist" (builtins.toJSON {
-            name = "k8s-pod-network";
-            cniVersion = "0.3.1";
-            plugins = [
-              {
-                type = "calico";
-                log_level = "info";
-                datastore_type = "kubernetes";
-                mtu = 1500;
-                ipam = { type = "calico-ipam"; };
-                policy = { type = "k8s"; };
-                kubernetes = { kubeconfig = "/etc/cni/net.d/calico-kubeconfig"; };
-              }
-            ];
-          }))
-          (pkgs.writeTextDir "calico-kubeconfig" (builtins.toJSON {
-            apiVersion = "v1";
-            kind = "Config";
-            clusters = [{
-              name = "local";
-              cluster.certificate-authority = "${top.secretsPath}/ca.pem";
-              cluster.server = top.apiserverAddress;
-            }];
-            users = [{
-              user = {
-                name = "calico-cni";
-                client-certificate = "${top.secretsPath}/calico-cni.pem";
-                client-key = "${top.secretsPath}/calico-cni-key.pem";
-              };
-            }];
-            contexts = [{
-              context = {
-                cluster = "local";
-                user = "calico-cni";
-              };
-              name = "local";
-            }];
-            current-context = "local";
-          }))
-        ];
-      });
-    };
 
   services.kubernetes.kubelet.cni.packages = [pkgs.calico-cni-plugin];
 
@@ -114,14 +68,14 @@ in
     })
   ];
   services.kubernetes.addonManager.addons = {
-    calico-ippool = {
-      apiVersion = "crd.projectcalico.org/v1";
-      kind = "IPPool";
-      metadata = { name = "default"; };
-      spec = {
-        cidr = top.apiserver.serviceClusterIpRange;
-      };
-    };
+    # calico-ippool = {
+    #   apiVersion = "crd.projectcalico.org/v1";
+    #   kind = "IPPool";
+    #   metadata = { name = "default"; };
+    #   spec = {
+    #     cidr = top.apiserver.serviceClusterIpRange;
+    #   };
+    # };
   };
 
 }
