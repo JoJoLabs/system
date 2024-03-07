@@ -5,6 +5,7 @@ let
   crd-file = (builtins.readFile "${toString self}/modules/nixos/kubernetes/calico-crds.json");
 in
 {
+  imports = [ ./typha.nix ];
   environment.systemPackages = with pkgs; [
     calicoctl
     calico-cni-plugin
