@@ -4,4 +4,7 @@
     name = "drbd.conf";
     text = "options drbd usermode_helper=disabled";
   };
+  systemd.tmpfiles.rules = [
+    "d /usr/src 0755 root root -"
+  ];
 }
