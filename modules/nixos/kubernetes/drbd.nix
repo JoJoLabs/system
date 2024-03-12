@@ -1,5 +1,6 @@
 { config, self, pkgs, lib, ... }: {
   services.drbd.enable = true;
+  services.drbd.enable_helper = false;
   boot.extraModprobeConfig = ''
     options drbd usermode_helper=disabled
   '';
