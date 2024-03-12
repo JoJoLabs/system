@@ -1,5 +1,4 @@
-{ lib, stdenv, fetchurl, flex, systemd, perl, pkgs, ... }:
-with pkgs;
+{ lib, stdenv, fetchurl, flex, systemd, perl, ... }:
 stdenv.mkDerivation rec {
   pname = "drbd-mod";
   version = "9.2.8";
