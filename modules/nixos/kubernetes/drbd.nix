@@ -1,4 +1,5 @@
 { config, self, pkgs, lib, ... }: {
+  imports = [ "../pkgs/linux/drb-mod"]
   environment.systemPackages = [ pkgs.drbd-mod ];
   services.udev.packages = [ pkgs.drbd-mod ];
   services.drbd.enable = true;
