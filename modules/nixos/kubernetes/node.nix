@@ -4,7 +4,7 @@ let
   kubeMasterAPIServerPort = 6443;
 in
 {
-  imports = [ ./calico.nix ];
+  imports = [ ./calico.nix ./drbd.nix ];
   # packages for administration tasks
   environment.systemPackages = with pkgs; [
     kompose
