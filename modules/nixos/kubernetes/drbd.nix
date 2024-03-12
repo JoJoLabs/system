@@ -1,4 +1,6 @@
 { config, self, pkgs, lib, ... }: {
+  environment.systemPackages = [ pkgs.drbd-mod ];
+  services.udev.packages = [ pkgs.drbd-mod ];
   services.drbd.enable = true;
   services.drbd.enable_helper = false;
   boot.extraModprobeConfig = ''
