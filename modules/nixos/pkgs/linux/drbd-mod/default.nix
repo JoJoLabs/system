@@ -1,4 +1,5 @@
 { lib, stdenv, fetchurl, flex, systemd, perl, ... }:
+with import <nixpkgs> {};
 stdenv.mkDerivation rec {
   pname = "drbd-mod";
   version = "9.2.8";
