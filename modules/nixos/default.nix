@@ -5,7 +5,7 @@
   ...
 }: {
   # bundles essential nixos modules
-  imports = [./pkgs.nix ../common.nix ./auto-upgrade.nix ./services];
+  imports = [../common.nix ./auto-upgrade.nix ./services];
 
   environment.systemPackages = with pkgs; [vscode firefox];
 
