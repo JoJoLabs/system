@@ -1,8 +1,6 @@
 { config, self, pkgs, lib, ... }: {
-  imports = [ ../pkgs/linux/drbd-mod/default.nix ];
-
-  environment.systemPackages = [ pkgs.drbd-mod ];
-  services.udev.packages = [ pkgs.drbd-mod ];
+  environment.systemPackages = [ (import ../pkgs/linux/drbd-mod/default.nix) ];
+  services.udev.packages = [ (import ../pkgs/linux/drbd-mod/default.nix) ];
   services.drbd.enable = true;
   services.drbd.enable_helper = false;
   boot.extraModprobeConfig = ''
