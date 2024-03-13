@@ -54,6 +54,7 @@
     ...
   } @ inputs: let
     inherit (flake-utils.lib) eachSystemMap;
+    forAllSystems = nixpkgs.lib.genAttrs systems;
 
     isDarwin = system: (builtins.elem system inputs.nixpkgs.lib.platforms.darwin);
     homePrefix = system:
@@ -266,7 +267,7 @@
       };
     };
 
-    packages.x86_64-linux = {
+    packages.x86_64-linux = lib.mkMerge [{
       kubemaster-installer = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         specialArgs = {inherit self inputs;};
@@ -328,7 +329,9 @@
         ];
         format = "install-iso";
       };
-    };
+    }
+    (import ./nixos/pkgs inputs )
+    ];
 
     homeConfigurations = {
       "joris@x86_64-linux" = mkHomeConfig {
