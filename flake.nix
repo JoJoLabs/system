@@ -54,7 +54,7 @@
     ...
   } @ inputs: let
     inherit (flake-utils.lib) eachSystemMap;
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+    # forAllSystems = nixpkgs.lib.genAttrs systems;
 
     isDarwin = system: (builtins.elem system inputs.nixpkgs.lib.platforms.darwin);
     homePrefix = system:
