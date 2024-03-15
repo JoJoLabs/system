@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, flex, systemd, perl, kernel, ... }:
+{ lib, stdenv, fetchurl, flex, systemd, perl, kernel, pkgs, ... }:
 stdenv.mkDerivation rec {
   pname = "drbd-mod";
   version = "9.2.8";
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   preConfigure =
     ''
-      export PATH=${systemd}/sbin:$PATH
+      export PATH=${systemd}/sbin:${pkgs.coccinelle}/bin:$PATH
       substituteInPlace drbd/Makefile \
         --replace /sbin '$(sbindir)'
     '';
