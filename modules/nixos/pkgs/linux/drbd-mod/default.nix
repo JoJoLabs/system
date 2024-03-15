@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
         --replace /sbin '$(sbindir)'
     '';
 
-  makeFlags = [ "SHELL=${stdenv.shell}" "KDIR='${kernel.dev}/lib/modules/${kernel.modDirVersion}/build'" ];
+  makeFlags = [ "SHELL=${stdenv.shell}" "KDIR='${kernel.dev}/lib/modules/${kernel.modDirVersion}/build'" "PATH=${systemd}/sbin:${pkgs.coccinelle}/bin:$PATH" ];
 
   installFlags = [
     "localstatedir=$(TMPDIR)/var"
