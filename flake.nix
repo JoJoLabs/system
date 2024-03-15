@@ -203,7 +203,6 @@
           ./profiles/default.nix
           ./profiles/kubemaster.nix
           ./modules/nixos/kubernetes/master.nix
-          ./modules/nixos/pkgs/pkgs.nix
         ];
       };
       "kubenode1" = mkNixosConfig {
