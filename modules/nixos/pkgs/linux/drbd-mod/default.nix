@@ -1,7 +1,4 @@
-{ config, lib, stdenv, fetchurl, flex, systemd, perl, ... }:
-let 
-  kernel = config.boot.kernelPackages.kernel;
-in
+{ lib, stdenv, fetchurl, flex, systemd, perl, kernel, ... }:
 stdenv.mkDerivation rec {
   pname = "drbd-mod";
   version = "9.2.8";
