@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "http://pkg.linbit.com//downloads/drbd/9/drbd-${version}.tar.gz";
-    sha256 = "511d889439468c32c3a8e8191d0a25cad18c11bc";
+    sha256 = "2ea2b594fb9c69bef02af701e1528676f048abe2bd5edb8eda6d033f95ed2b73";
   };
 
   nativeBuildInputs = [ flex ];
