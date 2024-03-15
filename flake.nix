@@ -203,6 +203,7 @@
           ./profiles/default.nix
           ./profiles/kubemaster.nix
           ./modules/nixos/kubernetes/master.nix
+          ./modules/nixos/pkgs/pkgs.nix
         ];
       };
       "kubenode1" = mkNixosConfig {
@@ -267,7 +268,7 @@
       };
     };
 
-    packages.x86_64-linux = lib.mkMerge [{
+    packages.x86_64-linux = {
       kubemaster-installer = nixos-generators.nixosGenerate {
         system = "x86_64-linux";
         specialArgs = {inherit self inputs;};
@@ -329,9 +330,7 @@
         ];
         format = "install-iso";
       };
-    }
-    (import ./nixos/pkgs inputs )
-    ];
+    };
 
     homeConfigurations = {
       "joris@x86_64-linux" = mkHomeConfig {
