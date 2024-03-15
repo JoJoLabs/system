@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   preConfigure =
     ''
-      export PATH=${systemd}/sbin:${pkgs.coccinelle}/bin:$PATH
+      export PATH=${systemd}/sbin:$PATH
       substituteInPlace drbd/Makefile \
         --replace /sbin '$(sbindir)'
     '';
@@ -28,13 +28,14 @@ stdenv.mkDerivation rec {
   preBuild = ''
     export PATH=${systemd}/sbin:${pkgs.coccinelle}/bin:$PATH
   '';
-  
+
   makeFlags = [ "SHELL=${stdenv.shell}" "KDIR='${kernel.dev}/lib/modules/${kernel.modDirVersion}/build'" ];
 
   installFlags = [
     "localstatedir=$(TMPDIR)/var"
     "sysconfdir=$(out)/etc"
     "INITDIR=$(out)/etc/init.d"
+    "DESTDIR=$(out)"
   ];
 
   meta = with lib; {
