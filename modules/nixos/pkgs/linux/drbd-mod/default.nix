@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, flex, systemd, perl, ... }:
+{ config, lib, stdenv, fetchurl, flex, systemd, perl, ... }:
 let 
   kernel = config.boot.kernelPackages.kernel;
 in
