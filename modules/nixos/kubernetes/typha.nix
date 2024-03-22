@@ -101,7 +101,7 @@ in
 
   services.kubernetes.pki.certs = {
     typha = top.lib.mkCert {
-      name = "typha";
+      name = "calico-typha";
       CN = "calico-typha";
       action = "systemctl restart typha-bootstrap.service";
     };
@@ -129,15 +129,15 @@ in
                   -subj "/CN=Calico Typha CA" \
                   -days 365
         ${pkgs.openssl}/bin/openssl req -newkey rsa:4096 \
-                  -keyout ${top.secretsPath}/typha.key \
+                  -keyout ${top.secretsPath}/calico-typha.key \
                   -nodes \
-                  -out ${top.secretsPath}/typha.csr \
+                  -out ${top.secretsPath}/calico-typha.csr \
                   -subj "/CN=calico-typha"
-        ${pkgs.openssl}/bin/openssl x509 -req -in ${top.secretsPath}/typha.csr \
+        ${pkgs.openssl}/bin/openssl x509 -req -in ${top.secretsPath}/calico-typha.csr \
                   -CA ${top.secretsPath}/typhaca.crt \
                   -CAkey ${top.secretsPath}/typhaca.key \
                   -CAcreateserial \
-                  -out ${top.secretsPath}/typha.crt \
+                  -out ${top.secretsPath}/calico-typha.crt \
                   -days 365
         ${pkgs.openssl}/bin/openssl req -newkey rsa:4096 \
                   -keyout ${top.secretsPath}/calico-node.key \
@@ -156,7 +156,7 @@ in
       ${top.package}/bin/kubectl delete secret -n kube-system calico-typha-certs --ignore-not-found
       ${top.package}/bin/kubectl delete secret -n kube-system calico-node-certs --ignore-not-found
       ${top.package}/bin/kubectl delete configmap -n kube-system calico-typha-ca --ignore-not-found
-      ${top.package}/bin/kubectl create secret generic -n kube-system calico-typha-certs --from-file=typha.key=${top.secretsPath}/typha.key --from-file=typha.crt=${top.secretsPath}/typha.crt
+      ${top.package}/bin/kubectl create secret generic -n kube-system calico-typha-certs --from-file=typha.key=${top.secretsPath}/calico-typha.key --from-file=typha.crt=${top.secretsPath}/calico-typha.crt
       ${top.package}/bin/kubectl create configmap -n kube-system calico-typha-ca --from-file=typhaca.crt=${top.secretsPath}/typhaca.crt
       ${top.package}/bin/kubectl create secret generic -n kube-system calico-node-certs --from-file=calico-node.key=${top.secretsPath}/calico-node.key --from-file=calico-node.crt=${top.secretsPath}/calico-node.crt
     '')
